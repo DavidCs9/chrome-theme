@@ -25,7 +25,7 @@ yarn add chrome-theme
 To use ChromeTheme, first, import the package in your project:
 
 ```
-import { ChromeTheme } from 'chrome-theme';
+import ChromeTheme from 'chrome-theme';
 ```
 
 ### Creating a ChromeTheme instance

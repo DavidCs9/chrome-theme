@@ -16,5 +16,9 @@
   },
   "devDependencies": {
     "typescript": "^5.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidCs9/chrome-theme.git"
   }
 }

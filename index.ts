@@ -81,6 +81,43 @@ class ChromeTheme {
       }
     })
   }
+
+  async getAverageColor() {
+    const color: any = await average(this.img)
+
+    /**
+     * Calculate the YIQ color contrast of the most colorful pixel and determine the text color to use.
+     * @param {Array} color - An array of the average color in RGB format.
+     * @returns {string} The color to use for the text, either "black" or "white".
+     */
+    const r = color[0]
+    const g = color[1]
+    const b = color[2]
+    const yiq = (r * 299 + g * 587 + b * 114) / 1000
+    const textColor = yiq >= 128 ? 'black' : 'white'
+
+    /**
+     * Update the background color of each element with the most colorful pixel and add transition effect.
+     * Add event listeners for mouseenter and mouseleave to change the opacity of the background color.
+     * @param {Array} elements - An array of HTML elements to update the background color.
+     * @param {Array} color - An array of the most colorful pixel in RGB format.
+     */
+    Array.from(this.elements).forEach((element) => {
+      if (element instanceof HTMLElement) {
+        element.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+        element.style.color = textColor
+        element.style.transition = 'background-color 0.3s ease' // add transition effect
+        element.addEventListener('mouseenter', () => {
+          // add event listener for mouseenter
+          element.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]}, 0.7)`
+        })
+        element.addEventListener('mouseleave', () => {
+          // add event listener for mouseleave
+          element.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+        })
+      }
+    })
+  }
 }
 
 export default ChromeTheme

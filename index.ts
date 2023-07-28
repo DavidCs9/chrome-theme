@@ -1,8 +1,12 @@
 import { prominent, average } from 'color.js'
 
 class ChromeTheme {
-  img
+  img: string
   elements: HTMLCollectionOf<Element>
+  constructor(img: string, elements: string) {
+    this.img = img
+    this.elements = document.getElementsByClassName(elements)
+  }
 
   setImg(src: string) {
     this.img = src
@@ -14,12 +18,12 @@ class ChromeTheme {
 
   async getMainColor() {
     const color: any = await prominent(this.img)
-    let mostColorful: any = color[0]
+    let mostColorful: number[] = color[0]
     let maxSum = mostColorful.reduce((acc, val) => acc + val, 0)
 
     // Find the index of the white color in the array of colors.
-    const whiteIndex = color.findIndex(
-      (color) => color[0] === 255 && color[1] === 255 && color[2] === 255
+    const whiteIndex: number = color.findIndex(
+      (color: number[]) => color[0] === 255 && color[1] === 255 && color[2] === 255
     )
 
     /**
@@ -41,7 +45,7 @@ class ChromeTheme {
      * @returns {Array} An array of the most colorful pixel in RGB format.
      */
     for (let i = 1; i < color.length; i++) {
-      const sum = color[i].reduce((acc, val) => acc + val, 0)
+      const sum: number = color[i].reduce((acc: any, val: any) => acc + val, 0)
       if (sum > maxSum) {
         mostColorful = color[i]
         maxSum = sum

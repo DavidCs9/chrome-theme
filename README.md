@@ -59,11 +59,9 @@ The ChromeTheme class will apply the chosen color (either the most prominent or 
 Here's a simple example of how you can use the chrome-theme package:
 
 ```
-import { ChromeTheme } from 'chrome-theme';
+import ChromeTheme from 'chrome-theme';
 
-const theme = new ChromeTheme();
-theme.setImg('path/to/image.jpg');
-theme.setElements('your-element-class');
+const theme = new ChromeTheme('path/to/image.jpg', 'your-element-class');
 
 theme.getMainColor(); // Apply the most prominent color to the elements
 // OR

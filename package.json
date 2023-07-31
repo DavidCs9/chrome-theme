@@ -1,6 +1,6 @@
 {
   "name": "chrome-theme",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "change the colors of your website, based on a single image",
   "main": "index.js",
   "scripts": {

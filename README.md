@@ -33,12 +33,16 @@ import ChromeTheme from 'chrome-theme';
 You can create an instance of the ChromeTheme class and configure it with an image source and a collection of HTML elements that you want to apply the theme to:
 
 ```
-const theme = new ChromeTheme();
-theme.setImg('path/to/image.jpg');
-theme.setElements('your-element-class'); // Use the class name of your HTML elements
+const theme = new ChromeTheme('path/to/image.jpg', 'your-element-class');
 ```
 
 ### Applying the most prominent color
+
+Then, you can apply the most prominent color from the image to the specified elements by calling the getMainColor() method:
+
+```
+theme.getMainColor();
+```
 
 Alternatively, you can apply the average color from the image to the specified elements by calling the getAverageColor() method:
 
